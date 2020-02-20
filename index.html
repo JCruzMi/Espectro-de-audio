@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+Audiovisualization using the html canvas element.
+©2017, Dominik Hofacker
+https://www.behance.net/dominikhofacker
+Please consider supporting this project on behance:
+https://www.behance.net/gallery/49260123/Web-Audio-Visualization
+-->
+    <head>
+        <meta charset="utf-8">
+        <meta content='IE=8' http-equiv='X-UA-Compatible'>
+        <title>WaifuEcualizador</title>
+        <meta name="viewport" content="width=device-width">
+        <!-- Das favicon.ico und das apple-touch-icon.png in das root Verzeichnis -->
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css' />
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="src/bufferloader.js"></script>
+        <script src="src/id3-minimized.js"></script>
+        <script src="src/audiovisualisierung.js"></script>
+    </head>
+    <body class="hero-bkg-animated">
+        <div class="hero-bkg-animated">
+            <input type="file" name="img" id="img">
+
+            <input type="file" id="input" onchange="handleFiles(this.files)"/>
+            <span id="loading"></span>
+            <div id="song_info_wrapper">
+                <div class="circular"><img src="src/minori.png" alt="" id="imagen" class="spring"></div>
+                <div id="artist">Unknown Artist</div>
+                <div id="title">Unknown Titel</div>
+                <div id="album">Unknown Album</div>
+            </div>
+            <canvas id="freq" width="1000" height="500"></canvas>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                (function(){
+                    function filePreview(input){
+                        if(input.files && input.files[0]){
+                            var reader = new FileReader();
+
+                            reader.onload = function(e){
+                                $('#imagen').attr("src",e.target.result);                        
+                            }
+
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    $('#img').change(function(){
+                        filePreview(this);
+                    });
+                })();
+            </script>
+        </div>
+    </body>
+</html>
